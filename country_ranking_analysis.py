@@ -26,7 +26,15 @@ pd.set_option("display.max_columns", 15)
 # 1. Data Loading
 # ---------------------------------------------------------------------------
 
-df = pd.read_csv("data/Country-data.csv")
+import os
+DATA_PATH = "data/Country-data.csv"
+if not os.path.exists(DATA_PATH):
+    raise FileNotFoundError(
+        "Dataset not found. Download it from Kaggle and place Country-data.csv in data/:\n"
+        "https://www.kaggle.com/datasets/rohan0301/unsupervised-learning-on-country-data"
+    )
+
+df = pd.read_csv(DATA_PATH)
 
 print("=" * 60)
 print("  COUNTRY SOCIOECONOMIC RANKING — PCA & FACTOR ANALYSIS")
